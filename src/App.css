@@ -1,0 +1,144 @@
+/* Custom styles complementing Tailwind for real estate CRM */
+
+/* Typography enhancements */
+.font-nunito {
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.3);
+}
+
+/* Status badges */
+.status-badge {
+  transition: all 0.2s ease;
+}
+
+/* Button gradients */
+.btn-primary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+/* Table row hover */
+.table-row-hover:hover {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%);
+}
+
+/* Modal backdrop animation */
+.modal-enter {
+  animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Detail page hero gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%);
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    z-index: 100;
+    transition: left 0.3s ease;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #10b981;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Custom focus rings */
+.focus-ring {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-gray-900 {
+    background-color: #111827;
+  }
+}
+
+/* Utility classes for better spacing */
+.space-y-18 > * + * {
+  margin-top: 4.5rem;
+}
+
+/* Badge animations */
+@keyframes pulse-badge {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.pulse-badge {
+  animation: pulse-badge 2s infinite;
+}
+
+/* Responsive table on mobile */
+@media (max-width: 640px) {
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .table-container table {
+    min-width: 600px;
+  }
+}
+
