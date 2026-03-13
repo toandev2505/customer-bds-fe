@@ -1,70 +1,119 @@
-# Getting Started with Create React App
+# 🏢 Real Estate CRM - Hệ Thống Quản Lý Bất Động Sản
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🌟 Giới Thiệu Dự Án
+Dự án **Real Estate CRM** được xây dựng nhằm giải quyết bài toán quản lý tập trung dữ liệu khách hàng và giỏ hàng cho các sàn giao dịch bất động sản. Hệ thống giúp tối ưu hóa quy trình vận hành, phân quyền nhân viên và theo dõi lịch sử tương tác khách hàng một cách khoa học.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 👥 Đội Ngũ Phát Triển (Nhóm 2)
+| STT | Họ và Tên | MSSV | Vai trò chính |
+|:---:|---|---|---|
+| 1 | Trương Lý Quốc Toàn | DH52201595 | Backend Lead |
+| 2 | Trương N. Tường Vy | DH52201788 | Frontend Lead |
+| 3 | Tạ Thanh Tấn | DH52201416 | Backend Developer |
+| 4 | Trần Võ Thúy Vy | DH52201787 | Frontend Developer |
+| 5 | Trương Đàm Công Quý | DH52201336 | QA & Deployment |
+| 6 | **Huỳnh Lê Thu Hương** | **DH52200755** | **Thiết kế hệ thống & Tài liệu** |
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🏗 Thiết Kế Hệ Thống (System Design)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. Sơ đồ Use Case (Use Case Diagram)
+```mermaid
+graph LR
+    subgraph "Hệ thống CRM"
+        UC1(Quản lý nhân viên)
+        UC2(Quản lý giỏ hàng BĐS)
+        UC3(Quản lý khách hàng)
+        UC4(Phân quyền truy cập)
+        UC5(Xem báo cáo thống kê)
+        UC6(Đăng nhập)
+    end
 
-### `npm test`
+    staff((Nhân viên Sale))
+    admin((Quản trị viên))
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    staff --> UC6
+    staff --> UC2
+    staff --> UC3
 
-### `npm run build`
+    admin --> UC6
+    admin --> UC1
+    admin --> UC2
+    admin --> UC3
+    admin --> UC4
+    admin --> UC5
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Sơ đồ Lớp (Class Diagram - Database Schema)
+```mermaid
+classDiagram
+    class User {
+        +int id
+        +string name
+        +string email
+        +string role
+        +login()
+    }
+    class Customer {
+        +int id
+        +string fullName
+        +string phone
+        +string demand
+        +int assignedStaffId
+    }
+    class Property {
+        +int id
+        +string title
+        +string address
+        +double price
+        +string status
+    }
+    class Interaction {
+        +int id
+        +int customerId
+        +datetime date
+        +string note
+    }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    User "1" -- "*" Customer : phụ trách
+    Customer "1" -- "*" Interaction : lịch sử tương tác
+    Customer "*" -- "*" Property : nhu cầu
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Sơ đồ Tuần tự (Sequence Diagram - Luồng lấy danh sách User)
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as User (Browser)
+    participant FE as Frontend (React)
+    participant BE as Backend (Spring Boot)
+    participant DB as Database (MySQL)
 
-### `npm run eject`
+    U->>FE: Truy cập đường dẫn /users
+    FE->>BE: Gọi API GET /users
+    Note over BE: Kiểm tra quyền truy cập
+    BE->>DB: Truy vấn SELECT * FROM users
+    DB-->>BE: Trả về tập dữ liệu
+    BE-->>FE: Trả về JSON (200 OK)
+    FE-->>U: Render danh sách lên giao diện
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠 Công Nghệ Sử Dụng
+- **Frontend:** ReactJS.
+- **Backend:** Spring Boot.
+- **Database:** MySQL.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📅 Lộ Trình Phát Triển (Roadmap)
+- [x] Thiết lập cấu trúc dự án & UI cơ bản.
+- [x] Xây dựng API CRUD User (Yêu cầu kiểm tra 14/3).
+- [ ] Hoàn thiện module Quản lý Khách hàng.
+- [ ] Triển khai module Giỏ hàng Bất động sản.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+*Tài liệu được duy trì bởi **Huỳnh Lê Thu Hương**.*
