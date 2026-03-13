@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -532,3 +533,10 @@ function App() {
 }
 
 export default App;
+=======
+function App() {
+  return <p>Trang đang được phát triển. Vui lòng truy cập sau.</p>;
+}
+
+export default App;
+>>>>>>> 57d986a458d4e6ee57acfc2744278eb6a36eb29c
