@@ -1,4 +1,4 @@
-# 🏢 Real Estate CRM - Hệ Thống Quản Lý Bất Động Sản
+# 🏢 Real Estate CRM - Hệ Thống Quản Lý Khách Hàng Bất Động Sản
 
 ## 🌟 Giới Thiệu Dự Án
 **Real Estate CRM** là một ứng dụng quản lý khách hàng chuyên biệt cho lĩnh vực bất động sản, được thiết kế với giao diện hiện đại, tối ưu trải nghiệm người dùng (UX/UI). Hệ thống cung cấp cái nhìn tổng quan và chi tiết về tệp khách hàng tiềm năng, giúp môi giới và sàn giao dịch theo dõi sát sao nhu cầu và tiến độ giao dịch.
