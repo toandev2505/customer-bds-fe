@@ -152,8 +152,8 @@ sequenceDiagram
     participant DB as Database (MySQL)
 
     U->>FE: Nhấn biểu tượng "Thùng rác"
-    FE->>U: Hiển thị Alert "Xác nhận xóa?"
-    U->>FE: Nhấn "OK"
+    FE->>U: Hiển thị Modal xác nhận xóa
+    U->>FE: Nhấn "Xác nhận xóa"
     FE->>BE: Gọi API DELETE /customers/{id}
     BE->>DB: DELETE FROM customers WHERE id = {id}
     DB-->>BE: Thành công
@@ -177,4 +177,4 @@ sequenceDiagram
 - [ ] Tối ưu hóa báo cáo thống kê chuyên sâu.
 
 ---
-*Tài liệu được duy trì bởi **Huỳnh Lê Thu Hương**.*
+
