@@ -1,0 +1,238 @@
+/* ESTATE CRM - PREMIER FINAL VERSION (Hương IT) */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --emerald-main: #10b981;
+  --emerald-hover: #059669;
+  --navy-dark: #0f172a;
+  --slate-text: #64748b;
+  --bg-app: #f8fafc;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-app);
+  color: var(--navy-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- SIDEBAR: GIỮ NGUYÊN PHONG CÁCH CỦA HƯƠNG --- */
+.sidebar {
+  width: 280px;
+  background: #ffffff;
+  border-right: 1px solid #f1f5f9;
+  height: 100vh;
+  padding: 2.5rem 1.5rem;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--emerald-main);
+  margin-bottom: 3rem;
+  text-decoration: none;
+}
+/* Tạo khoảng cách giữa các mục menu */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Khoảng cách 12px giữa các mục */
+  padding: 0 16px; /* Cách lề trái phải cho đẹp */
+}
+
+/* Thêm khoảng cách đệm bên trong mỗi mục */
+.menu-item {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Cố định độ rộng phủ kín thẻ li */
+  height: 48px; /* Cố định chiều cao để chữ nhiều hay ít không bị lệch */
+  padding: 0 16px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.sidebar-menu li {
+  width: 100%; /* Đảm bảo mọi mục menu đều rộng bằng nhau */
+  padding: 0 16px; /* Tạo khoảng cách với 2 mép sidebar */
+  margin-bottom: 8px;
+}
+/* Khoảng cách giữa icon và chữ */
+.menu-item span:first-child {
+  margin-right: 12px;
+}
+.menu-item.active {
+  background-color: var(--emerald-main);
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
+  cursor: pointer;
+}
+
+/* --- HEADER --- */
+.header {
+  padding: 1.5rem 2.5rem;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- TABLE MODERN: HIỆU ỨNG HOVER MỚI --- */
+.table-modern {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-modern tr {
+  transition: all 0.2s ease; /* Giúp đổi màu mượt mà */
+}
+
+/* Khi di chuột vào dòng: Đổi nền xanh nhạt và hiện vạch màu đầu dòng */
+.table-modern tr:hover {
+  background-color: rgba(16, 185, 129, 0.04) !important;
+  transform: translateX(4px); /* Nhích nhẹ sang phải */
+}
+
+/* Hiển thị vạch màu xanh ở đầu dòng khi hover */
+.table-modern tr:hover td:first-child {
+  box-shadow: inset 4px 0 0 0 var(--emerald-main);
+}
+
+/* Làm nổi bật Tên Khách khi hover */
+.table-modern tr:hover td:nth-child(2) {
+  color: var(--emerald-main);
+  font-weight: 700;
+}
+
+.table-modern thead th {
+  position: relative;
+  padding: 18px 20px;
+  background: #fcfdfe;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+
+/* Đường kẻ đa sắc dưới Header bảng */
+.table-modern thead th::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #10b981, #f59e0b, #ef4444, #8b5cf6);
+}
+
+.table-modern td {
+  padding: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* --- ACTION BUTTONS: MÀU VIEW XANH DƯƠNG --- */
+.action-group {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btn-view {
+  background-color: #f0f9ff !important; /* Màu xanh dương cực nhạt để làm nền */
+  color: #0ea5e9 !important;           /* Màu xanh dương đậm cho icon con mắt */
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e0f2fe !important; /* Viền nhẹ để nổi bật khỏi nền bảng */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-view:hover {
+  background-color: #0ea5e9 !important; /* Khi di chuột vào sẽ hiện xanh đậm */
+  color: #ffffff !important;           /* Con mắt chuyển sang màu trắng */
+  transform: translateY(-2px);
+}.btn-view {
+  background-color: #f0f9ff !important; /* Màu xanh dương cực nhạt để làm nền */
+  color: #0ea5e9 !important;           /* Màu xanh dương đậm cho icon con mắt */
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e0f2fe !important; /* Viền nhẹ để nổi bật khỏi nền bảng */
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-view:hover {
+  background-color: #0ea5e9 !important; /* Khi di chuột vào sẽ hiện xanh đậm */
+  color: #ffffff !important;           /* Con mắt chuyển sang màu trắng */
+  transform: translateY(-2px);
+}
+.btn-edit {
+  background-color: var(--emerald-main) !important;
+  color: white !important;
+}
+
+.btn-delete {
+  background-color: #ef4444 !important;
+  color: white !important;
+}
+
+.btn-edit, .btn-delete, .btn-view {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* Sidebar Footer (Version đồ án) */
+.sidebar-footer {
+  margin-top: auto;
+  font-size: 11px;
+  font-weight: 600;
+  color: #94a3b8;
+  padding-top: 20px;
+  border-top: 1px solid #f8fafc;
+  text-align: center;
+}
+/* Class quản lý các mục trong Sidebar */
+.menu-item, 
+.sidebar-menu li,
+.sidebar-menu div {
+  cursor: pointer !important; /* Tạo biểu tượng bàn tay khi rê chuột vào */
+  transition: all 0.2s ease; /* Thêm hiệu ứng mượt mà khi chuyển đổi */
+}
+
+/* Đảm bảo các nút bấm khác cũng có bàn tay */
+button, 
+.avatar-ad,
+.btn-view {
+  cursor: pointer !important;
+}
